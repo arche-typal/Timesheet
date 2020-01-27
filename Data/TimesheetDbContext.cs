@@ -7,8 +7,13 @@ namespace timesheet.Data
     {
         public DbSet<Timesheet> Timesheets { get; set; }
 
-        public TimesheetDbContext(DbContextOptions<TimesheetDbContext> options)
+       
+        public TimesheetDbContext(DbContextOptions options)
             : base(options)
         { }
+
+
+        //public TimesheetDbContext()
+        //{ }
     }
 }
