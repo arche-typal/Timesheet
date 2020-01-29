@@ -6,6 +6,7 @@ namespace timesheet.Data
     public class TimesheetDbContext : DbContext
     {
         public DbSet<Timesheet> Timesheets { get; set; }
+        public DbSet<TimesheetDay> TimesheetDays { get; set; }
 
        
         public TimesheetDbContext(DbContextOptions options)

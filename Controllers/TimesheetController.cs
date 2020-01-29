@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using timesheet.Data;
 using timesheet.Models;
 using timesheet.ViewModels;
@@ -23,22 +24,30 @@ namespace timesheet.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            IList<Timesheet> timesheets = context.Timesheets.ToList();
+
+            //IList<Timesheet> timesheets = context.Timesheets.ToList();
+            IList<Timesheet> timesheets = context.Timesheets.Include(c => c.DayOfTheWeek).ToList();
             return View(timesheets);
         }
 
         public IActionResult Add()
         {
-            AddTimesheetViewModel addTimesheetViewModel = new AddTimesheetViewModel();
+            //AddTimesheetViewModel addTimesheetViewModel = new AddTimesheetViewModel();
+            AddTimesheetViewModel addTimesheetViewModel = new AddTimesheetViewModel(context.TimesheetDays.ToList());
             return View(addTimesheetViewModel);
         }
 
         [HttpPost]
         public IActionResult Add(AddTimesheetViewModel addTimesheetViewModel)
         {
-            Timesheet newTimesheet = new Timesheet
-            {
+            TimesheetDay newTimesheetDay = 
+                context.TimesheetDays.Single(c => c.ID == addTimesheetViewModel.DayOfTheWeekID);
+                //context.TimesheetDays.
+            
+            Timesheet newTimesheet = new Timesheet 
+            {            
                 Name = addTimesheetViewModel.Name,
+                DayOfTheWeek = newTimesheetDay
             };
 
             context.Timesheets.Add(newTimesheet);

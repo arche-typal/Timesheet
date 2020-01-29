@@ -25,12 +25,41 @@ namespace timesheet.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("DayOfTheWeekID")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
 
+                    b.HasIndex("DayOfTheWeekID");
+
                     b.ToTable("Timesheets");
+                });
+
+            modelBuilder.Entity("timesheet.Models.TimesheetDay", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("TimesheetDays");
+                });
+
+            modelBuilder.Entity("timesheet.Models.Timesheet", b =>
+                {
+                    b.HasOne("timesheet.Models.TimesheetDay", "DayOfTheWeek")
+                        .WithMany("Timesheets")
+                        .HasForeignKey("DayOfTheWeekID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
