@@ -9,5 +9,10 @@ namespace timesheet.Models
     {
         public string Name { get; set; }
         public int ID { get; set; }
+
+        //one-to-many
+        public int DayOfTheWeekID { get; set; }
+        public TimesheetDay DayOfTheWeek { get; set; }
+
     }
 }

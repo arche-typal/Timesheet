@@ -1,0 +1,12 @@
+﻿@model timesheet.ViewModels.AddPersonSkillViewModel
+
+<h1>Add Person</h1>
+
+<form asp-controller="Person" asp-action="AddItem" method="post">
+    <div class="form-group">
+        <label asp-for="SkillID"></label>
+        <select asp-for="SkillID" asp-items="Model.Skills"></select>
+    </div>
+    <input type="hidden" name="PersonID" value="@Model.Person.ID" />
+    <input type="submit" value="Add Skill To Person" />
+</form>

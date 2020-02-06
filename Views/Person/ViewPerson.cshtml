@@ -1,0 +1,12 @@
+﻿@model timesheet.ViewModels.ViewPersonViewModel
+
+
+<ul>
+    @foreach (var skillPerson in Model.Skills)
+    { 
+        <li>@skillPerson.Skill.Name</li>
+    }
+</ul>
+
+
+<p><a asp-controller="Person" asp-action="AddItem" asp-route-id="@Model.Person.ID">ADD SKILLS</a></p>

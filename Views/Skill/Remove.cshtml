@@ -1,0 +1,9 @@
+﻿<form method="post">
+    @foreach (var skill in ViewBag.skills) 
+    { 
+        <input type ="checkbox" name="skillIds" id="@skill.ID" value="@skill.ID" />
+        <label for="@skill.ID">@skill.Name</label>
+        <br />
+    }
+    <input type="submit" value="Remove skills" />
+</form>

@@ -1,0 +1,11 @@
+﻿@model timesheet.ViewModels.AddPersonViewModel
+
+<h1>Add Person</h1>
+
+<form asp-controller="Person" asp-action="Add" method="post">
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+    <input type="submit" value="Add People" />
+</form>

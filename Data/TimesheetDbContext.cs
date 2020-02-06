@@ -7,8 +7,29 @@ namespace timesheet.Data
     {
         public DbSet<Timesheet> Timesheets { get; set; }
 
-        public TimesheetDbContext(DbContextOptions<TimesheetDbContext> options)
+        //one-to-many
+        public DbSet<TimesheetDay> TimesheetDays { get; set; }
+
+
+        //many-to-many
+        public DbSet<Person> Persons { get; set; }
+        public DbSet<Skill> Skills { get; set; }
+        public DbSet<SkillPerson> SkillPersonSet { get; set; }
+
+
+        //dbcontext
+        public TimesheetDbContext(DbContextOptions options)
             : base(options)
         { }
+
+
+        //many-to-many OnModelCreating
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<SkillPerson>()
+                .HasKey(c => new { c.SkillID, c.PersonID });
+        }
+        //public TimesheetDbContext()
+        //{ }
     }
 }

@@ -1,0 +1,9 @@
+﻿<form method="post">
+    @foreach (var day in ViewBag.timesheetDays) 
+    { 
+        <input type ="checkbox" name="timesheetdaysIds" id="@day.ID" value="@day.ID" />
+        <label for="@day.ID">@day.Name</label>
+        <br />
+    }
+    <input type="submit" value="Remove timesheets" />
+</form>

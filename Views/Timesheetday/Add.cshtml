@@ -1,0 +1,11 @@
+﻿@model timesheet.ViewModels.AddTimesheetDayViewModel
+
+<h1>Add Day of Week</h1>
+
+<form asp-controller="Timesheetday" asp-action="Add" method="post">
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+    <input type="submit" value="Add Day of Week" />
+</form>

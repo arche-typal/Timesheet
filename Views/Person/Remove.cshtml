@@ -1,0 +1,9 @@
+﻿<form method="post">
+    @foreach (var person in ViewBag.persons) 
+    { 
+        <input type ="checkbox" name="personIds" id="@person.ID" value="@person.ID" />
+        <label for="@person.ID">@person.Name</label>
+        <br />
+    }
+    <input type="submit" value="Remove people" />
+</form>
