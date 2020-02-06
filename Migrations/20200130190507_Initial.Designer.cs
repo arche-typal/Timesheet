@@ -9,7 +9,7 @@ using timesheet.Data;
 namespace timesheet.Migrations
 {
     [DbContext(typeof(TimesheetDbContext))]
-    [Migration("20200129110839_Initial")]
+    [Migration("20200130190507_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

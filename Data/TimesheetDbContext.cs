@@ -6,7 +6,10 @@ namespace timesheet.Data
     public class TimesheetDbContext : DbContext
     {
         public DbSet<Timesheet> Timesheets { get; set; }
+
+        //one-to-many
         public DbSet<TimesheetDay> TimesheetDays { get; set; }
+
 
         //many-to-many
         public DbSet<Person> Persons { get; set; }
@@ -14,6 +17,7 @@ namespace timesheet.Data
         public DbSet<SkillPerson> SkillPersonSet { get; set; }
 
 
+        //dbcontext
         public TimesheetDbContext(DbContextOptions options)
             : base(options)
         { }

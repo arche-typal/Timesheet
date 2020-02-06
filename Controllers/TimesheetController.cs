@@ -55,5 +55,41 @@ namespace timesheet.Controllers
 
             return Redirect("/Timesheet");
         }
+
+
+        public IActionResult Remove()
+        {
+            ViewBag.timesheets = context.Timesheets.ToList();
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Remove(int[] timesheetIds)
+        {
+            foreach (int timesheetId in timesheetIds)
+            {
+                //context.Timesheets.Remove(timesheet);
+                //Timesheet aTimesheet = context.Timesheets.Single(t => t.ID == timesheetId);
+                //context.Timesheets.Remove(aTimesheet);
+
+                context.Timesheets.Remove(context.Timesheets.Single(t => t.ID == timesheetId));
+            }
+
+            context.SaveChanges();
+            return Redirect("/Timesheet/Index");
+        }
+
+        public IActionResult Edit(int timesheetId)
+        {
+            Timesheet timesheet = context.Timesheets.Single(t => t.ID == timesheetId);
+
+            return View(timesheet);
+        }
+        
+        [HttpPost]
+        public IActionResult Edit(int timesheetId, string name)
+
+
     }
+
 }

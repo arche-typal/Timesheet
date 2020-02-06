@@ -43,7 +43,27 @@ namespace timesheet.Controllers
             context.TimesheetDays.Add(newTimesheetDay);
             context.SaveChanges();
 
-            return Redirect("/");
+            return Redirect("/Timesheetday/Index");
         }
+
+        public IActionResult Remove()
+        {
+            ViewBag.timesheetDays = context.TimesheetDays.ToList();
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Remove(int[] timesheetdaysIds)
+        {
+            foreach (int day in timesheetdaysIds) 
+            {
+                context.TimesheetDays.Remove(context.TimesheetDays.Single(d => d.ID == day));
+            }
+
+            context.SaveChanges();
+            return Redirect("/Timesheetday/Index");
+        }
+
+
     }
 }

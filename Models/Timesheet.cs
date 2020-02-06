@@ -13,5 +13,6 @@ namespace timesheet.Models
         //one-to-many
         public int DayOfTheWeekID { get; set; }
         public TimesheetDay DayOfTheWeek { get; set; }
+
     }
 }

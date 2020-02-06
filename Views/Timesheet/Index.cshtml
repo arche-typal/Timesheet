@@ -1,20 +1,25 @@
 ﻿@model IList<timesheet.Models.Timesheet>
 
 @if (Model.Count == 0)
-{ 
+{
     <p>No timesheets!</p>
 }
-
-<table class="table">
-    <tr>
-        <th>Name</th>
-    </tr>
-    @foreach (var sheet in Model)
-    { 
+else { 
+    <table class="table">
         <tr>
-            <td>@sheet.Name</td>
+            <th>ID</th>
+            <th>Day</th>
         </tr>
-    }
-</table>
+        @foreach (var sheet in Model)
+        {
+            <tr>
+                <td>@sheet.ID</td>
+                <td>@sheet.DayOfTheWeek.Name</td>
+            </tr>
+        }
+    </table> 
+}
+
+
 
 <p><a asp-controller="Timesheet" asp-action="Add">Add Timesheet</a></p>

@@ -11,7 +11,7 @@
 
     <div class="form-group">
         <label asp-for="DayOfTheWeekID">Day of The Week</label>
-        <select asp-for="DayOfTheWeekID" asp-items="Model.TimesheetDays"></select>
+        <select asp-for="DayOfTheWeekID" asp-items="@ViewBag.timesheet.DayOfTheWeek"></select>
     </div>
 
     <input type="submit" value="Add Timesheet" />

@@ -13,7 +13,12 @@ namespace timesheet.Models
         //many-to-many
         //public string Skill { get; set; }
 
-        public IList<SkillPerson> SkillPersons { get; set; } = new List<SkillPerson>();
+        public IList<SkillPerson> SkillPersons { get; set; }
+
+        public Person()
+        { 
+        
+        }
 
     }
 }

@@ -62,7 +62,7 @@ namespace timesheet
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Timesheet}/{action=Add}/{id?}");
+                    pattern: "{controller=Person}/{action=Add}/{id?}");
             });
         }
     }
